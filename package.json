@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html",
+    "build-github": "parcel build index.html --public-url ./ -d docs"
   },
   "keywords": [],
   "author": "",

@@ -9,6 +9,7 @@ Created with React and Parcel bundler.
 - run `npm install` to install dependencies
 - run `npm start` to run Parcel bundler server
 - run `npm run build` to create a production bundle
+- run `npm run build-github` to create a production bundle inside **docs** folder (for GitHub pages)
 
 ## Editing stations
 
