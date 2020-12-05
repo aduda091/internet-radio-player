@@ -6,6 +6,9 @@ const stations = [
     { name: 'istra', url: 'https://uk1.streamingpulse.com/ssl/RadioIstra' },
     { name: 'labin', url: 'http://radiolabin.streamradio.com.hr:9500/256.mp3' },
     { name: 'rijeka', url: 'https://20073.live.streamtheworld.com/RIJEKAAAC.aac' },
+    { name: 'rovinj', url: 'http://rovinj.fm:8000/;' },
+    { name: 'umag', url: 'http://www.radioeurostar.hr:8030/;*.mp3' },
+    { name: 'medulin', url: 'http://188.165.232.7:8263/medulinfm' },
     { name: 'narodni', url: 'http://live.narodni.hr:8059/;' },
     { name: 'otvoreni', url: 'https://otrlive.radioca.st/streams/64kbps' },
     { name: 'dalmacija', url: 'http://shoutcast.pondi.hr:8000/;stream/1' }
