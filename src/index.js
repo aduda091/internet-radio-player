@@ -20,7 +20,7 @@ const App = () => {
     const resolvePlayingState = station ? (
         <>
             <div className="current-station">{station}</div>
-            <button className="play-pause-btn" onClick={() => setIsPlaying(!isPlaying)}>
+            <button className={`play-pause-btn ${isPlaying ? "stop-btn" : "play-btn"}`} onClick={() => setIsPlaying(!isPlaying)}>
                 {isPlaying ? "STOP" : "PLAY"}
             </button>
         </>
