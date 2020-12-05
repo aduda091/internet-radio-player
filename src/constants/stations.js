@@ -1,14 +1,17 @@
-const stations = {
-    "hrt1": "https://21223.live.streamtheworld.com/PROGRAM1AAC.aac",
-    "hrt2": "https://21223.live.streamtheworld.com/PROGRAM2AAC.aac",
-    "hrt3": "https://22603.live.streamtheworld.com/PROGRAM3AAC.aac",    
-    "pula": "https://21223.live.streamtheworld.com/PULAAAC.aac",
-    "istra": "https://uk1.streamingpulse.com/ssl/RadioIstra",
-    "labin": "http://radiolabin.streamradio.com.hr:9500/256.mp3",
-    "rijeka": "https://20073.live.streamtheworld.com/RIJEKAAAC.aac",
-    "narodni": "http://live.narodni.hr:8059/;",
-    "otvoreni": "https://otrlive.radioca.st/streams/64kbps",
-    "dalmacija": "http://shoutcast.pondi.hr:8000/;stream/1"
-};
+const stations = [
+    { name: 'hrt1', url: 'https://21223.live.streamtheworld.com/PROGRAM1AAC.aac' },
+    { name: 'hrt2', url: 'https://21223.live.streamtheworld.com/PROGRAM2AAC.aac' },
+    { name: 'hrt3', url: 'https://22603.live.streamtheworld.com/PROGRAM3AAC.aac' },
+    { name: 'pula', url: 'https://21223.live.streamtheworld.com/PULAAAC.aac' },
+    { name: 'istra', url: 'https://uk1.streamingpulse.com/ssl/RadioIstra' },
+    { name: 'labin', url: 'http://radiolabin.streamradio.com.hr:9500/256.mp3' },
+    { name: 'rijeka', url: 'https://20073.live.streamtheworld.com/RIJEKAAAC.aac' },
+    { name: 'rovinj', url: 'http://rovinj.fm:8000/;' },
+    { name: 'umag', url: 'http://www.radioeurostar.hr:8030/;*.mp3' },
+    { name: 'medulin', url: 'http://188.165.232.7:8263/medulinfm' },
+    { name: 'narodni', url: 'http://live.narodni.hr:8059/;' },
+    { name: 'otvoreni', url: 'https://otrlive.radioca.st/streams/64kbps' },
+    { name: 'dalmacija', url: 'http://shoutcast.pondi.hr:8000/;stream/1' }
+];
 
 export default stations;

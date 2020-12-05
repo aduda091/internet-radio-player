@@ -19,11 +19,22 @@ html, body {
 }
 
 .play-pause-btn {
+    background: none;
+    border: none;
+    border-radius: 5px;
     color: black;
     cursor: pointer;
     display: block;
     font-size: 4rem;
     width: 100%;
+
+    &.play-btn {
+        background: lightgreen;
+    }
+
+    &.stop-btn {
+        background: lightcoral;
+    }
 }
 
 .station-heading {
