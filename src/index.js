@@ -11,8 +11,8 @@ const App = () => {
     const [station, setStation] = useState("");
     const [url, setUrl] = useState("");
 
-    const handleStationChange = (station, url) => {
-        setStation(station);
+    const handleStationChange = (name, url) => {
+        setStation(name);
         setUrl(url);
         setIsPlaying(true);
     };

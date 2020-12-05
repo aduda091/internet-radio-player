@@ -3,10 +3,10 @@ import React from "react";
 import stations from "../../constants/stations";
 
 const StationList = (props) => {
-    const renderList = Object.entries(stations).map(([station, url]) => {
+    const renderList = stations.map(({name, url}) => {
         return (
-            <div className="station-item" key={url} onClick={() => props.onStationChange(station, url)}>
-                {station}
+            <div className="station-item" key={url} onClick={() => props.onStationChange(name, url)}>
+                {name}
             </div>
         );
     });
