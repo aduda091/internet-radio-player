@@ -1,6 +1,7 @@
 import React from "react";
 
 import stations from "../../constants/stations";
+import LatestNews from "../LatestNews/LatestNews";
 
 const StationList = (props) => {
     const renderList = stations.map(({name, url}) => {
@@ -13,7 +14,10 @@ const StationList = (props) => {
     return (
         <>
             <h2 className="station-heading">Postaje</h2>
-            <div className="station-list">{renderList}</div>
+            <div className="station-list">
+                {renderList}
+                <LatestNews onLatestNewsClick={props.onStationChange} />
+            </div>
         </>
     );
 };
