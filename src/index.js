@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import ReactPlayer from "react-player";
 
@@ -10,11 +10,13 @@ const App = () => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [station, setStation] = useState("");
     const [url, setUrl] = useState("");
+    const oldUrl = useRef("");
 
     const handleStationChange = (name, url) => {
         setStation(name);
         setUrl(url);
         setIsPlaying(true);
+        oldUrl.current = url;
     };
 
     const offlineHandler = () => {
@@ -23,7 +25,17 @@ const App = () => {
     }
     const onlineHandler = () =>{
         console.log("online");
-        setIsPlaying(true);
+        setIsPlaying(false);
+        setTimeout(() => {
+            if (url) {
+                setIsPlaying(true);
+            } else if (oldUrl.current) {
+                setUrl(oldUrl.current);
+                setIsPlaying(true);
+            } else {
+                alert("no url :O");
+            }
+        }, 1500);
     }
 
     useEffect(() => {
