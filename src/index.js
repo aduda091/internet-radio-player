@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import ReactPlayer from "react-player";
 
@@ -16,6 +16,26 @@ const App = () => {
         setUrl(url);
         setIsPlaying(true);
     };
+
+    const offlineHandler = () => {
+        console.log("offline");
+        setIsPlaying(false);
+    }
+    const onlineHandler = () =>{
+        console.log("online");
+        setIsPlaying(true);
+    }
+
+    useEffect(() => {
+        
+        window.addEventListener("offline", offlineHandler);
+
+        window.addEventListener("online", onlineHandler);
+        return () => {
+            window.removeEventListener("online", onlineHandler);
+            window.removeEventListener("offline", offlineHandler);
+        }
+    }, [])
 
     const resolvePlayingState = station ? (
         <>
