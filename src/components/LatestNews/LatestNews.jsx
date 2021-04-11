@@ -12,6 +12,10 @@ const LatestNews = (props) => {
     };
     fetchUrl();
   }, []);
+
+  if (!url) {
+      return null;
+  }
   return (
     <div
       className="station-item latest-news"
