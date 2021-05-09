@@ -1,13 +1,14 @@
 import axios from "axios";
 
-const hrtPageUrl = "https://hrt1-latest-news.glitch.me/latest-news";
+const backendUrl = "https://hrt1-latest-news.glitch.me/latest-news";
+
 
 const latestNewsFetcher = () => {
-  const targetUrl = hrtPageUrl;
+  const targetUrl = backendUrl;
   return new Promise((resolve, reject) => {
     axios.get(targetUrl).then((res) => {
-      const url = res.data.url;
-      resolve(url);
+      const urls = res.data;
+      resolve(urls);
     });
   });
 };
