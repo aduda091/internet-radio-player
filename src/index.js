@@ -2,12 +2,15 @@ import React, { useState, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import ReactPlayer from "react-player";
 
+import contentModes from "./constants/contentModes";
 import StationList from "./components/StationList";
 
 import "./style.scss";
+import ShowsList from "./components/ShowsList/ShowsList";
 
 const App = () => {
     const [isPlaying, setIsPlaying] = useState(false);
+    const [mode, setMode] = useState(contentModes.RADIO);
     const [station, setStation] = useState("");
     const [url, setUrl] = useState("");
     const oldUrl = useRef("");
@@ -58,10 +61,37 @@ const App = () => {
         </>
     ) : null;
 
+    const resolveDisplayMode = () => {
+        switch (mode) {
+            case contentModes.RADIO:
+                return <StationList onStationChange={handleStationChange} />;
+            case contentModes.SHOWS:
+                return <ShowsList onStationChange={handleStationChange} />;
+        }
+    }
+
+    const resolveSwitchMode = () => {
+        switch (mode) {
+            case contentModes.RADIO:
+                return (
+                    <div className="mode-switch">
+                        <button onClick={() => setMode(contentModes.SHOWS)}>Emisije</button>
+                    </div>
+                );
+            case contentModes.SHOWS:
+                return (
+                    <div className="mode-switch">
+                        <button onClick={() => setMode(contentModes.RADIO)}>Radio</button>
+                    </div>
+                );
+        }
+    }
+
     return (
         <div className="player-container">
             {resolvePlayingState}
-            <StationList onStationChange={handleStationChange} />
+            {resolveDisplayMode()}
+            {resolveSwitchMode()}
             <ReactPlayer url={url} playing={isPlaying} width="0" height="0" />
         </div>
     );

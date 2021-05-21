@@ -60,3 +60,14 @@ html, body {
         text-decoration: underline;
     }
 }
+
+.mode-switch {
+    border-top: 2px solid black;
+    padding-top: 20px;
+
+    button {
+        display: block;
+        font-size: 2rem;
+        width: 100%;
+    }
+}
