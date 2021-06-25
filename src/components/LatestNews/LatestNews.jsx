@@ -12,18 +12,23 @@ const channels = [
     }
 ];
 
+const cachedUrls = localStorage.getItem("newsUrls") ? JSON.parse(localStorage.getItem("newsUrls")) : {};
+
 const LatestNews = props => {
-    const [urls, setUrls] = useState({});
+    const [urls, setUrls] = useState(cachedUrls);
+    const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
-        const fetchUrl = async () => {
+        const fetchUrls = async () => {
             const newsUrls = await latestNewsFetcher();
+            localStorage.setItem("newsUrls", JSON.stringify(newsUrls));
             setUrls(newsUrls);
+            setIsLoading(false);
         };
-        fetchUrl();
+        fetchUrls();
     }, []);
 
     const renderLatestNews = channels.map(({ name, urlKey }) => (
-        <div key={urlKey} className="station-item latest-news" onClick={() => props.onLatestNewsClick(name, urls[urlKey])}>
+        <div key={urlKey} className={`station-item latest-news ${isLoading ? "cached" : ""}`} onClick={() => props.onLatestNewsClick(name, urls[urlKey])}>
             {name}
         </div>
     ));
