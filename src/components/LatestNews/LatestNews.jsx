@@ -7,8 +7,12 @@ const channels = [
         urlKey: "hr1NewsUrl"
     },
     {
-        name: "Županijski dnevnik Pula",
+        name: "Zadnje vijesti Pula",
         urlKey: "pulaNewsUrl"
+    },
+    {
+        name: "Županijski dnevnik Pula",
+        urlKey: "pulaZupanijskiDnevnikUrl"
     }
 ];
 
