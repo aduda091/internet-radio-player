@@ -3,6 +3,22 @@ import latestNewsFetcher from "../../utils/latestNewsFetcher";
 
 const channels = [
     {
+        name: "Kalendar",
+        urlKey: "radioKalendarUrl"
+    },
+    {
+        name: "Škovacera",
+        urlKey: "skovaceraUrl"
+    },
+    {
+        name: "Špija",
+        urlKey: "sjoraSpijaUrl"
+    },
+    {
+        name: "Tržnica",
+        urlKey: "radioTrznicaUrl"
+    },
+    {
         name: "Zadnje vijesti HR1",
         urlKey: "hr1NewsUrl"
     },
@@ -13,7 +29,7 @@ const channels = [
     {
         name: "Županijski dnevnik Pula",
         urlKey: "pulaZupanijskiDnevnikUrl"
-    }
+    },
 ];
 
 const cachedUrls = localStorage.getItem("newsUrls") ? JSON.parse(localStorage.getItem("newsUrls")) : {};
