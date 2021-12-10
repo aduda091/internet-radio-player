@@ -1,60 +1,57 @@
 import React, { useState, useEffect } from "react";
-// import showFetcher from "../../utils/showFetcher";
-import showsMockData from "../../mock/shows";
+import showFetcher from "../../utils/showFetcher";
+//import showsMockData from "../../mock/shows";
 
 const showsList = [
     {
         name: "Povijest četvrtkom",
         urlKey: "emisijePovijestCetvrtkom",
-        showList: showsMockData.emisijePovijestCetvrtkom
+        showList: []
     }
-]
+];
 
 const ShowsList = props => {
     const [shows, setShows] = useState(showsList);
 
-    /*
     useEffect(() => {
-        const fetchUrls = async (urlKey) => {
+        const fetchUrls = async urlKey => {
             const showUrls = await showFetcher(urlKey);
             return showUrls;
         };
 
         shows.forEach(async show => {
             const showUrls = await fetchUrls(show.urlKey);
-            show.showList = showUrls;
-
-            const updatedShows = {...shows, ...show};
-            setShows(updatedShows);
-        })
-        
-        
+            const showsCopy = [...shows];
+            const showCopy = {...show};
+            showCopy.showList = showUrls;
+            const currentShowId = showsCopy.findIndex(s => s.urlKey === show.urlKey);
+            showsCopy.splice(currentShowId, 1, showCopy);
+            setShows(showsCopy);
+        });
     }, []);
-    */
-    
-    const renderList = showList => showList.map(({name, show_url}) => {
+
+    const renderList = showList =>
+        showList.map(({ title, audioFile, id }) => {
+            return (
+                <div className="station-item" key={id} onClick={() => props.onStationChange(title, audioFile)}>
+                    {title}
+                </div>
+            );
+        });
+
+    const renderShows = shows?.map(show => {
         return (
-            <div className="station-item" key={show_url} onClick={() => props.onStationChange(name, show_url)}>
-                {name}
+            <div key={show.name}>
+                <h4>{show.name}</h4>
+                {show?.showList?.length ? renderList(show.showList) : "Učitavanje..."}
             </div>
         );
     });
 
-    const renderShows = shows.map(show => {
-        return (
-            <div key={show.name}>
-                <h4>{show.name}</h4>
-                {show.showList ? renderList(show.showList) : "Učitavanje..."}
-            </div>
-        )
-    })
-
     return (
         <>
             <h2 className="station-heading">Emisije</h2>
-            <div className="station-list">
-                {shows && renderShows}
-            </div>
+            <div className="station-list">{shows && renderShows}</div>
         </>
     );
 };
