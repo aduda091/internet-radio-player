@@ -7,6 +7,7 @@ import StationList from "./components/StationList";
 
 import "./style.scss";
 import ShowsList from "./components/ShowsList/ShowsList";
+import Clock from "./components/Clock/clock";
 
 const App = () => {
     const [isPlaying, setIsPlaying] = useState(false);
@@ -89,6 +90,7 @@ const App = () => {
 
     return (
         <div className="player-container">
+            <Clock />
             {resolvePlayingState}
             {resolveDisplayMode()}
             {resolveSwitchMode()}
