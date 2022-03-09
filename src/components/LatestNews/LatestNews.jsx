@@ -19,6 +19,10 @@ const channels = [
         urlKey: "radioTrznicaUrl"
     },
     {
+        name: "Explora",
+        urlKey: "exploraUrl"
+    },
+    {
         name: "Zadnje vijesti HR1",
         urlKey: "hr1NewsUrl"
     },
