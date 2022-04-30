@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const backendUrl = "https://hrt1-latest-news.glitch.me/latest-news";
+const backendUrl = "https://croatian-radio-next.vercel.app/api/legacy/latest-news";
 
 
 const latestNewsFetcher = () => {

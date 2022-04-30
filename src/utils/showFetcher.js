@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const backendUrls = {
-    emisijePovijestCetvrtkom: "https://hrt1-latest-news.glitch.me/history"
+    emisijePovijestCetvrtkom: "https://croatian-radio-next.vercel.app/api/legacy/history"
 };
 
 const showFetcher = showKey => {
