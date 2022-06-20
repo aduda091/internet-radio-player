@@ -1,5 +1,5 @@
 const stations = [
-    { name: 'hrt1', url: 'https://25593.live.streamtheworld.com/PROGRAM1AAC.aac' },
+    { name: 'hrt1', url: 'https://21223.live.streamtheworld.com/PROGRAM1AAC.aac' },
     { name: 'hrt2', url: 'https://21223.live.streamtheworld.com/PROGRAM2AAC.aac' },
     { name: 'hrt3', url: 'https://22333.live.streamtheworld.com/PROGRAM3AAC.aac' },
     { name: 'pula', url: 'https://21223.live.streamtheworld.com/PULAAAC.aac' },
