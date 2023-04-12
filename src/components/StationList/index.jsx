@@ -4,9 +4,9 @@ import stations from "../../constants/stations";
 import LatestNews from "../LatestNews/LatestNews";
 
 const StationList = (props) => {
-    const renderList = stations.map(({name, url}) => {
+    const renderList = stations.map(({name, url, mount}) => {
         return (
-            <div className="station-item" key={url} onClick={() => props.onStationChange(name, url)}>
+            <div className="station-item" key={url} onClick={() => props.onStationChange(name, url, mount)}>
                 {name}
             </div>
         );

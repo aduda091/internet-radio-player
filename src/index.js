@@ -8,26 +8,30 @@ import StationList from "./components/StationList";
 import "./style.scss";
 import ShowsList from "./components/ShowsList/ShowsList";
 import Clock from "./components/Clock/Clock";
+import streamUrlResolver from "./utils/streamUrlResolver";
 
 const App = () => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [mode, setMode] = useState(contentModes.RADIO);
     const [station, setStation] = useState("");
     const [url, setUrl] = useState("");
+    const [backupUrl, setBackupUrl] = useState("");
+
     const oldUrl = useRef("");
 
-    const handleStationChange = (name, url) => {
+    const handleStationChange = (name, url, mount) => {
         setStation(name);
         setUrl(url);
         setIsPlaying(true);
+        streamUrlResolver(mount).then(resolvedUrl => setBackupUrl(resolvedUrl));
         oldUrl.current = url;
     };
 
     const offlineHandler = () => {
         console.log("offline");
         setIsPlaying(false);
-    }
-    const onlineHandler = () =>{
+    };
+    const onlineHandler = () => {
         console.log("online");
         setIsPlaying(false);
         setTimeout(() => {
@@ -40,23 +44,25 @@ const App = () => {
                 alert("no url :O");
             }
         }, 1500);
-    }
+    };
 
     useEffect(() => {
-        
         window.addEventListener("offline", offlineHandler);
 
         window.addEventListener("online", onlineHandler);
         return () => {
             window.removeEventListener("online", onlineHandler);
             window.removeEventListener("offline", offlineHandler);
-        }
-    }, [])
+        };
+    }, []);
 
     const resolvePlayingState = station ? (
         <>
             <div className="current-station">{station}</div>
-            <button className={`play-pause-btn ${isPlaying ? "stop-btn" : "play-btn"}`} onClick={() => setIsPlaying(!isPlaying)}>
+            <button
+                className={`play-pause-btn ${isPlaying ? "stop-btn" : "play-btn"}`}
+                onClick={() => setIsPlaying(!isPlaying)}
+            >
                 {isPlaying ? "STOP" : "PLAY"}
             </button>
         </>
@@ -69,7 +75,7 @@ const App = () => {
             case contentModes.SHOWS:
                 return <ShowsList onStationChange={handleStationChange} />;
         }
-    }
+    };
 
     const resolveSwitchMode = () => {
         switch (mode) {
@@ -86,7 +92,7 @@ const App = () => {
                     </div>
                 );
         }
-    }
+    };
 
     return (
         <div className="player-container">
@@ -94,7 +100,7 @@ const App = () => {
             {resolvePlayingState}
             {resolveDisplayMode()}
             {resolveSwitchMode()}
-            <ReactPlayer url={url} playing={isPlaying} width="0" height="0" />
+            <ReactPlayer url={url} playing={isPlaying} width="0" height="0" onError={() => setUrl(backupUrl)} />
         </div>
     );
 };
