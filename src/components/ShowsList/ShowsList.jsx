@@ -39,19 +39,19 @@ const ShowsList = props => {
             );
         });
 
-    const renderShows = shows?.map(show => {
+    const renderShows = shows ? shows.map(show => {
         return (
             <div key={show.name}>
                 <h4>{show.name}</h4>
-                {show?.showList?.length ? renderList(show.showList) : "Učitavanje..."}
+                {show.showList && show.showList.length ? renderList(show.showList) : "Učitavanje..."}
             </div>
         );
-    });
+    }) : null;
 
     return (
         <>
             <h2 className="station-heading">Emisije</h2>
-            <div className="station-list">{shows && renderShows}</div>
+            <div className="station-list">{renderShows}</div>
         </>
     );
 };
