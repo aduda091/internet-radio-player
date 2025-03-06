@@ -36,7 +36,7 @@ const channels = [
     },
     {
         name: "Aktualno u 17",
-        urlKey: "aktualnoU17"
+        urlKey: "aktualnoU17Url"
     },
 ];
 
