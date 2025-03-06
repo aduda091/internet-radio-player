@@ -34,6 +34,10 @@ const channels = [
         name: "Županijski dnevnik Pula",
         urlKey: "pulaZupanijskiDnevnikUrl"
     },
+    {
+        name: "Aktualno u 17",
+        urlKey: "aktualnoU17"
+    },
 ];
 
 const cachedUrls = localStorage.getItem("newsUrls") ? JSON.parse(localStorage.getItem("newsUrls")) : {};
